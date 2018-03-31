@@ -10,6 +10,7 @@ import           Control.Concurrent
 import           System.Random
 
 import           Model
+import           Constants
 
 run :: IO ()
 run = do
