@@ -1,6 +1,6 @@
 module Main where
 
-import Bank
+import Experiment
 
 main :: IO ()
 main = run

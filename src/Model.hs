@@ -1,35 +1,49 @@
 module Model where
 
 import Data.List (find, zipWith4)
-import Data.Maybe (catMaybes)
 import System.Random
 
 import Constants
 
+-- * Эксперимент
 data Experiment = Experiment
-  { bank           :: Bank
-  , newRequests    :: [Request]
-  , parameters     :: Parameters
-  , statistic      :: Statistic
-  , isInitialized  :: Bool
-  , isPaused       :: Bool
-  , isEnded        :: Bool
-  , lastUsedNumber :: Int
+  { bank           :: Bank       -- ^ банк
+  , newRequests    :: [Request]  -- ^ поток поступающих заявок
+  , parameters     :: Parameters -- ^ параметры
+  , statistic      :: Statistic  -- ^ статистика
+  , isInitialized  :: Bool       -- ^ инициализирован ли
+  , isPaused       :: Bool       -- ^ поставлен ли на паузу
+  , isEnded        :: Bool       -- ^ закончен ли
+  , lastUsedNumber :: Int        -- ^ последний использованный номер клиента
   } deriving (Eq)
 
 class ExperimentClass experiment where
+  -- | Инициализировать эксперимент
   initExperiment      :: experiment
+  -- | Изменить параметр
   changeParameter     :: ParametersField -> ChangeAction -> experiment -> experiment
+  -- | Начать эксперимент
   startExperiment     :: StdGen -> experiment -> experiment
+  -- | Продолжить/приостановить эксперимент
   playPauseExperiment :: experiment -> experiment
+  -- | Сбросить эскперимент
   resetExperiment     :: experiment
+  -- | Перейти к концу эксперимента
   finishExperiment    :: experiment -> experiment
+  -- | Добавить заявки в очередь в виде клиентов и обновить статистику.
+  -- Учитываются ушедшие клиенты.
   addToQueue          :: [Request] -> experiment -> experiment
+  -- | Уход клиентов из очереди
   leftFromQueue       :: experiment -> experiment
+  -- | Занять при возможности свободных клерков
   setWorkToClerks     :: experiment -> experiment
+  -- | Обновить очередь клиентов
   updateClients       :: experiment -> experiment
+  -- | Обновить состояние клерков
   updateClerks        :: experiment -> experiment
+  -- | Добавить клиентов в очередь.
   addClients          :: [Request] -> experiment -> experiment
+  -- | Моделирование заданного промежутка времени.
   addTime             :: Minutes -> experiment -> experiment
 
 instance ExperimentClass Experiment where
@@ -248,18 +262,20 @@ instance ExperimentClass Experiment where
       newClientNumber = lastUsedNumber ex + 1
       newLeftClientsNum = leftClientsNum (statistic ex) + length (req : reqs)
 
+-- * Банк
 data Bank = Bank
-  { queue     :: [Client]
-  , infoTable :: [TableLine]
-  , clerks    :: [Clerk]
+  { queue     :: [Client]    -- ^ очередь клиентов
+  , infoTable :: [TableLine] -- ^ информационное табло
+  , clerks    :: [Clerk]     -- ^ клерки
   } deriving (Eq)
 
 class BankClass bank_ where
-  initBank              :: bank_
-  delClient             :: Client -> bank_ -> bank_
-  addClerk              :: bank_ -> bank_
-  delClerk              :: bank_ -> bank_
-  servicedClientNumbers :: bank_ -> [Int]  
+  -- | Инициализировать банк
+  initBank :: bank_
+  -- | Добавить клерка
+  addClerk :: bank_ -> bank_
+  -- | Удалить клерка
+  delClerk :: bank_ -> bank_
 
 instance BankClass Bank where
 
@@ -267,10 +283,6 @@ instance BankClass Bank where
     { queue     = []
     , infoTable = initInfoTable
     , clerks    = initClerks
-    }
-
-  delClient client bank_ = bank_
-    { queue = filter (/= client) (queue bank_)
     }
 
   addClerk bank_
@@ -293,18 +305,16 @@ instance BankClass Bank where
       amount       = length (clerks bank_)
       deletedClerk = last   (clerks bank_)
 
-  servicedClientNumbers bank_ =
-    number <$> catMaybes (work <$> busyClerks)
-    where
-      busyClerks = filter (\clerk_ -> work clerk_ /= Nothing) (clerks bank_)
-
+-- * Клиент
 data Client = Client
-  { request      :: Request
-  , number       :: Int
+  { request      :: Request -- ^ заявка
+  , number       :: Int     -- ^ номер клиента
   } deriving (Eq)
 
 class ClientClass client where
+  -- | Вычесть 1 мин. из длительности обработки заявки
   subtractDuration :: client -> client
+  -- | Завершение обслуживания при исчерпании длительности обработки заявки
   completeService  :: Maybe client -> Maybe client
 
 instance ClientClass Client where
@@ -320,16 +330,20 @@ instance ClientClass Client where
     | otherwise                      = (Just client)
   completeService work_ = work_
 
+-- * Заявка
 data Request = Request
-  { profit       :: Money
-  , dayToComing  :: Int
-  , timeToComing :: Minutes
-  , duration     :: Minutes
+  { profit       :: Money   -- ^ прибыль
+  , dayToComing  :: Int     -- ^ дней до прихода
+  , timeToComing :: Minutes -- ^ времени до прихода (в день прихода)
+  , duration     :: Minutes -- ^ длительность
   } deriving (Eq)
 
 class RequestClass request_ where
-  initNewRequests :: [request_]  
+  -- | Инициализировать поток заявок
+  initNewRequests :: [request_]
+  -- | Сгенерировать поток заявок
   genNewRequests  :: StdGen -> Parameters -> [request_]
+  -- | Создать заявку
   mkRequest       :: Money -> Int -> Minutes -> Minutes -> request_
 
 instance RequestClass Request where
@@ -355,16 +369,22 @@ instance RequestClass Request where
     , duration     = duration_
     }
 
+-- * Строка информационного табла
 data TableLine = TableLine
-  { tableClerk  :: String
-  , tableClient :: Maybe Int
+  { tableClerk  :: String    -- ^ имя клерка
+  , tableClient :: Maybe Int -- ^ номер клиента (при наличии)
   } deriving (Eq)
 
 class TableLineClass tableLine where
+  -- | Инициализировать информационное табло
   initInfoTable   :: [tableLine]
+  -- | Удалить строку информационного табла
   delTableLine    :: Clerk -> [tableLine] -> [tableLine]
+  -- | Добавить строку информационного табла
   addTableLine    :: Clerk -> [tableLine] -> [tableLine]
+  -- | Инициализировать строку информационного табла
   initTableLine   :: Clerk -> tableLine
+  -- | Обновить информационное табло
   updateInfoTable :: [Clerk] -> [tableLine] -> [tableLine]
 
 instance TableLineClass TableLine where
@@ -385,21 +405,31 @@ instance TableLineClass TableLine where
   updateInfoTable (clerk : cs) table =
      addTableLine clerk $ delTableLine clerk $ updateInfoTable cs table
 
+-- * Клерк
 data Clerk = Clerk
-  { name   :: String
-  , salary :: Money
-  , work   :: Maybe Client
+  { name   :: String       -- ^ имя
+  , salary :: Money        -- ^ зарплата
+  , work   :: Maybe Client -- ^ обслуживаемый клиент
   } deriving (Eq)
 
 class ClerkClass clerk where
+  -- | Инициализировать клерков
   initClerks        :: [clerk]
+  -- | Начать обслуживание клиента клерком
   takeClientToClerk :: Client -> clerk -> clerk
+  -- | Обновить время обслуживание
   serviceTime       :: clerk -> clerk
+  -- | Завершение обслуживания при исчерпании длительности обработки заявки
   serviceComplete   :: clerk -> clerk
+  -- | Не завершилось ли обслуживание клиента
   isServiced        :: clerk -> Bool
+  -- | Полученная прибыль от обслуживания заявки
   serviceProfit     :: clerk -> Money
+  -- | Свободен ли клерк
   withoutWork       :: clerk -> Bool
+  -- | Список доступных банку клерков (по умолчанию)
   defaultClerks     :: [clerk]
+  -- | Создать клерка
   mkClerk           :: String -> clerk
 
 instance ClerkClass Clerk where
@@ -438,18 +468,20 @@ instance ClerkClass Clerk where
     , work   = Nothing
     }
 
+-- * Параметры
 data Parameters = Parameters
-  { timeStep         :: Minutes
-  , simulationPeriod :: Int
-  , clerksNum        :: Int
-  , queueLenLimit    :: Int
-  , serviceMinTime   :: Minutes
-  , serviceMaxTime   :: Minutes
-  , comingMinTime    :: Minutes
-  , comingMaxTime    :: Minutes
+  { timeStep         :: Minutes -- ^ шаг моделирования (мин.)
+  , simulationPeriod :: Int     -- ^ период моделирования (дней)
+  , clerksNum        :: Int     -- ^ число клерков
+  , queueLenLimit    :: Int     -- ^ максимальная длина очереди
+  , serviceMinTime   :: Minutes -- ^ минимальное время обслуживания (мин.)
+  , serviceMaxTime   :: Minutes -- ^ максимальное время обслуживания (мин.)
+  , comingMinTime    :: Minutes -- ^ минимальное время между приходом клиентов
+  , comingMaxTime    :: Minutes -- ^ максимальное время между приходом клиентов
   } deriving (Eq)
 
 class ParametersClass parameters_ where
+  -- | Инициализация параметров
   initParameters :: parameters_
 
 instance ParametersClass Parameters where
@@ -465,16 +497,18 @@ instance ParametersClass Parameters where
     , comingMaxTime    = snd defaultComingTimes
     }
 
+-- * Статистика
 data Statistic = Statistic
-  { servicedClientsNum   :: Int
-  , leftClientsNum       :: Int
-  , bankProfit           :: Money
-  , spentDays            :: Int
-  , currentDay           :: Day
-  , currentTime          :: Minutes
+  { servicedClientsNum   :: Int     -- ^ число обсужанных клиентов
+  , leftClientsNum       :: Int     -- ^ число потерянных клиентов
+  , bankProfit           :: Money   -- ^ прибыль банка
+  , spentDays            :: Int     -- ^ число пройденных дней
+  , currentDay           :: Day     -- ^ текущий день
+  , currentTime          :: Minutes -- ^ текущее время
   } deriving (Eq)
 
 class StatisticClass statistic_ where
+  -- | Инициализация статистики
   initStatistic :: statistic_
 
 instance StatisticClass Statistic where

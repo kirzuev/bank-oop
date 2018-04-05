@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Bank where
+module Experiment where
 
 import           Miso
 import           Miso.String (MisoString, ms, (<>))
