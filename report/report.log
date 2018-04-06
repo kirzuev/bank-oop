@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.10)  6 APR 2018 17:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.10)  6 APR 2018 17:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -267,7 +267,7 @@ ps-converted-to.pdf>] (./report.toc)
 \openout3 = `report.toc'.
 
  [1] [2] [3]
-<classes.pdf, id=27, 614.295pt x 794.97pt>
+<classes.pdf, id=27, 460.72125pt x 596.2275pt>
 File: classes.pdf Graphic file (type pdf)
  <use classes.pdf>
 Package pdftex.def Info: classes.pdf used on input line 83.
@@ -281,11 +281,15 @@ Overfull \hbox (56.90552pt too wide) in paragraph at lines 83--84
 Overfull \vbox (26.58542pt too high) has occurred while \output is active []
 
 
-[4 <./classes.pdf>]
+[4 <./classes.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./classes.pdf): PDF inclusio
+n: invalid other resource which is no dict (key 'ProcSets', type <array>); igno
+red.
+>]
 LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 89.
 
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 Overfull \hbox (1.59436pt too wide) in paragraph at lines 99--99
@@ -331,7 +335,7 @@ Overfull \hbox (20.11484pt too wide) in paragraph at lines 231--231
 приходом клиентов[] 
  []
 
-[9] [10] <objects.pdf, id=54, 460.72125pt x 596.2275pt>
+[9] [10] <objects.pdf, id=65, 460.72125pt x 596.2275pt>
 File: objects.pdf Graphic file (type pdf)
  <use objects.pdf>
 Package pdftex.def Info: objects.pdf used on input line 258.
@@ -385,7 +389,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 280--281
 
  []
 
-<not_inited.png, id=76, 1213.53375pt x 744.7825pt>
+<not_inited.png, id=87, 1213.53375pt x 744.7825pt>
 File: not_inited.png Graphic file (type png)
  <use not_inited.png>
 Package pdftex.def Info: not_inited.png used on input line 282.
@@ -405,7 +409,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 288--289
 
  []
 
-<processing.png, id=82, 1242.6425pt x 731.73375pt>
+<processing.png, id=93, 1242.6425pt x 731.73375pt>
 File: processing.png Graphic file (type png)
  <use processing.png>
 Package pdftex.def Info: processing.png used on input line 290.
@@ -420,7 +424,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 294--295
 
  []
 
-<paused.png, id=87, 1253.68375pt x 748.7975pt>
+<paused.png, id=98, 1253.68375pt x 748.7975pt>
 File: paused.png Graphic file (type png)
  <use paused.png>
 Package pdftex.def Info: paused.png used on input line 296.
@@ -440,7 +444,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 302--303
 
  []
 
-<ended.png, id=92, 1249.66875pt x 750.805pt>
+<ended.png, id=103, 1249.66875pt x 750.805pt>
 File: ended.png Graphic file (type png)
  <use ended.png>
 Package pdftex.def Info: ended.png used on input line 304.
@@ -475,10 +479,10 @@ c/cm-super/sfrm1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
 cm-super/sfsx1440.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm
 -super/sfti1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-s
 uper/sftt1200.pfb>
-Output written on report.pdf (17 pages, 714749 bytes).
+Output written on report.pdf (17 pages, 553673 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 139 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
