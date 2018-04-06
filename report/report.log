@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.10)  6 APR 2018 02:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.10)  6 APR 2018 16:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -277,13 +277,11 @@ Overfull \hbox (74.53033pt too wide) in paragraph at lines 82--83
 [][] 
  []
 
-[4
 
-]
 Overfull \vbox (8.19461pt too high) has occurred while \output is active []
 
 
-[5 <./classes.pdf>]
+[4 <./classes.pdf>]
 LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 87.
 
 
@@ -301,9 +299,7 @@ Overfull \hbox (50.9823pt too wide) in paragraph at lines 104--104
 periment -> experiment[] 
  []
 
-[6
-
-]
+[5]
 Underfull \hbox (badness 10000) in paragraph at lines 128--128
 
  []
@@ -318,12 +314,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 143--143
 
  []
 
-[7]
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 155--155
 
  []
 
-[8] [9]
+[7] [8]
 Overfull \hbox (13.94135pt too wide) in paragraph at lines 228--228
 []\T2A/cmtt/m/n/12 , comingMinTime    :: Minutes -- ^ минимальное время между п
 риходом клиентов[] 
@@ -335,7 +331,7 @@ Overfull \hbox (20.11484pt too wide) in paragraph at lines 229--229
 приходом клиентов[] 
  []
 
-[10] [11] <objects.pdf, id=57, 460.72125pt x 596.2275pt>
+[9] [10] <objects.pdf, id=54, 460.72125pt x 596.2275pt>
 File: objects.pdf Graphic file (type pdf)
  <use objects.pdf>
 Package pdftex.def Info: objects.pdf used on input line 255.
@@ -345,13 +341,11 @@ Overfull \hbox (74.53033pt too wide) in paragraph at lines 255--256
 [][] 
  []
 
-[12
 
-]
 Overfull \vbox (8.19461pt too high) has occurred while \output is active []
 
 
-[13 <./objects.pdf
+[11 <./objects.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./objects.pdf): PDF inclusio
 n: invalid other resource which is no dict (key 'ProcSets', type <array>); igno
@@ -381,9 +375,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
  []
 
-[14
-
-]
+[12]
 Underfull \hbox (badness 10000) in paragraph at lines 274--275
 
  []
@@ -393,7 +385,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
  []
 
-<not_inited.png, id=82, 1213.53375pt x 744.7825pt>
+<not_inited.png, id=76, 1213.53375pt x 744.7825pt>
 File: not_inited.png Graphic file (type png)
  <use not_inited.png>
 Package pdftex.def Info: not_inited.png used on input line 278.
@@ -408,14 +400,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 280--281
 
  []
 
-[15
-
- <./not_inited.png>]
+[13 <./not_inited.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
-<processing.png, id=88, 1242.6425pt x 731.73375pt>
+<processing.png, id=82, 1242.6425pt x 731.73375pt>
 File: processing.png Graphic file (type png)
  <use processing.png>
 Package pdftex.def Info: processing.png used on input line 286.
@@ -425,14 +415,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 286--287
 
  []
 
-[16
-
- <./processing.png>]
+[14 <./processing.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 290--291
 
  []
 
-<paused.png, id=93, 1253.68375pt x 748.7975pt>
+<paused.png, id=87, 1253.68375pt x 748.7975pt>
 File: paused.png Graphic file (type png)
  <use paused.png>
 Package pdftex.def Info: paused.png used on input line 292.
@@ -447,14 +435,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 294--295
 
  []
 
-[17
-
- <./paused.png>]
+[15 <./paused.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 298--299
 
  []
 
-<ended.png, id=98, 1249.66875pt x 750.805pt>
+<ended.png, id=92, 1249.66875pt x 750.805pt>
 File: ended.png Graphic file (type png)
  <use ended.png>
 Package pdftex.def Info: ended.png used on input line 300.
@@ -469,9 +455,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 302--303
 
  []
 
-[18
-
- <./ended.png>] (./report.aux) ) 
+[16 <./ended.png>] (./report.aux) ) 
 Here is how much of TeX's memory you used:
  4343 strings out of 493014
  61982 string characters out of 6133351
@@ -480,21 +464,21 @@ Here is how much of TeX's memory you used:
  13273 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,4n,38p,992b,647s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/d
-vips/cm-super/cm-super-t2a.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
-ic/cm-super/sfbx1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public
-/cm-super/sfbx1728.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/c
-m-super/sfrm1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-
-super/sfsx1440.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-su
-per/sfti1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-supe
-r/sftt1200.pfb>
-Output written on report.pdf (19 pages, 715052 bytes).
+{/usr/local/texlive/2016/texmf-dist/fonts/en
+c/dvips/cm-super/cm-super-t2a.enc}</usr/local/texlive/2016/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/p
+ublic/cm-super/sfbx1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/pub
+lic/cm-super/sfbx1728.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publi
+c/cm-super/sfrm1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
+cm-super/sfsx1440.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm
+-super/sfti1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-s
+uper/sftt1200.pfb>
+Output written on report.pdf (17 pages, 714696 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
+ 128 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
